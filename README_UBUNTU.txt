@@ -60,6 +60,10 @@ $ cd accumulo
 ##########
 
 $ mvn package
+$ mvn install
+
+# Generate java docs; which took about 5 minutes
+$ mvn -Dlinksource=true javadoc:aggregate
 
 ##########
 # Install Apache Hadoop 
