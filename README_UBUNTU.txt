@@ -53,17 +53,14 @@ $ cd accumulo
 # accumulo-assemble-1.5.0-incubating-SNAPSHOT-dist.tar.gz
 # file in the src/assemble/target directory.
 #
-# This step confused me because the Accumulo README
-# mentions mvn assembly:single and I tried to use
-# that Maven command. It is not needed, at least not
-# in this situation.
+# Add -Dmaven.test.skip=true if you want to skip unit testing.
 ##########
 
-$ mvn package
-$ mvn install
+$ mvn package -P assemble
+$ mvn -Dmaven.test.skip=true install
 
 # Generate java docs; which took about 5 minutes
-$ mvn -Dlinksource=true javadoc:aggregate
+$ mvn -Dmaven.test.skip=true -Dlinksource=true javadoc:aggregate
 
 ##########
 # Install Apache Hadoop 
@@ -223,11 +220,12 @@ $ echo "maxClientCnxns=100" | sudo tee -a $ZOOKEEPER_HOME/conf/zoo.cfg
 $ bin/zkServer.sh start
 
 $ cd ~
-$ export TAR_DIR=~/workspace/accumulo/src/assemble/target
-$ tar xvzf $TAR_DIR/accumulo-assemble-1.5.0-incubating-SNAPSHOT-dist.tar.gz
-
+$ export TAR_DIR=~/.m2/repository/org/apache/accumulo/accumulo-assemble/1.5.0-incubating-SNAPSHOT
+$ tar xvzf $TAR_DIR/accumulo-server-1.5.0-incubating-SNAPSHOT.jar
 # Add the following to your .bashrc file.
 $ export ACCUMULO_HOME=~/accumulo-1.5.0-incubating-SNAPSHOT
+
+accumulo-assemble-1.5.0-incubating-SNAPSHOT.pom
 
 $ cd $ACCUMULO_HOME/conf
 
