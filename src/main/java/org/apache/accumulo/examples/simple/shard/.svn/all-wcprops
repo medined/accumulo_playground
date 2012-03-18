@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/shard
+END
+Query.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/shard/Query.java
+END
+Index.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/shard/Index.java
+END
+Reverse.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/shard/Reverse.java
+END
+ContinuousQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/shard/ContinuousQuery.java
+END

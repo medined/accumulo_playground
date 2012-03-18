@@ -56,7 +56,7 @@ $ cd accumulo
 # Add -Dmaven.test.skip=true if you want to skip unit testing.
 ##########
 
-$ mvn package -P assemble
+$  
 $ mvn -Dmaven.test.skip=true install
 
 # Generate java docs; which took about 5 minutes
@@ -72,17 +72,6 @@ $ sudo mv hadoop-0.20.2 /usr/lib
 $ rm hadoop-0.20.2.tar.gz
 $ cd /usr/lib/hadoop-0.20.2
 
-
-# Install zookeeper. It will automatically
-# start.
-
-$ sudo apt-get install hadoop-zookeeper-server
-
-##########
-# As an aside, you can use Ubuntu's service
-# command to control zookeeper like this:
-# sudo service hadoop-zookeeper-server start
-##########
 
 ##########
 # Now we can configure Pseudo-Distributed hadoop
@@ -205,27 +194,15 @@ $ cat index.html
 $ rm index.html
 
 ##########
-# Download and install zookeeper
+# Configure Zookeeper (see README_ZOOKEEPER.txt)
 ##########
-$ cd ~
-$ echo "export ZOOKEEPER_HOME=/usr/lib/zookeeper-3.4.3" >> ~/.bashrc
-
-$ wget http://apache.petsads.us//zookeeper/zookeeper-3.4.3/zookeeper-3.4.3.tar.gz
-$ tar xvfz zookeeper-3.4.3.tar.gz
-$ sudo mv zookeeper-3.4.3 /usr/lib
-$ rm zookeeper-3.4.3.tar.gz
-$ cd /usr/lib/zookeeper-3.4.3
-$ cp conf/zoo_sample.cfg conf/zoo.cfg
-$ echo "maxClientCnxns=100" | sudo tee -a $ZOOKEEPER_HOME/conf/zoo.cfg
-$ bin/zkServer.sh start
 
 $ cd ~
-$ export TAR_DIR=~/.m2/repository/org/apache/accumulo/accumulo-assemble/1.5.0-incubating-SNAPSHOT
-$ tar xvzf $TAR_DIR/accumulo-server-1.5.0-incubating-SNAPSHOT.jar
+$ export TAR_DIR=./workspace/accumulo/src/assemble
+$ rm -rf accumulo-1.5.0-incubating-SNAPSHOT
+$ tar xvzf $TAR_DIR/accumulo-1.5.0-incubating-SNAPSHOT-dist.tar.gz
 # Add the following to your .bashrc file.
 $ export ACCUMULO_HOME=~/accumulo-1.5.0-incubating-SNAPSHOT
-
-accumulo-assemble-1.5.0-incubating-SNAPSHOT.pom
 
 $ cd $ACCUMULO_HOME/conf
 

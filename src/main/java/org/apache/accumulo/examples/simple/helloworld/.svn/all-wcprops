@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/helloworld
+END
+InsertWithBatchWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/helloworld/InsertWithBatchWriter.java
+END
+ReadData.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/helloworld/ReadData.java
+END
+InsertWithOutputFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/helloworld/InsertWithOutputFormat.java
+END

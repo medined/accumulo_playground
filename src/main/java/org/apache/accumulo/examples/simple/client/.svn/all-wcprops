@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client
+END
+RandomBatchWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client/RandomBatchWriter.java
+END
+Flush.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client/Flush.java
+END
+ReadWriteExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client/ReadWriteExample.java
+END
+SequentialBatchWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client/SequentialBatchWriter.java
+END
+RowOperations.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client/RowOperations.java
+END
+RandomBatchScanner.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/client/RandomBatchScanner.java
+END

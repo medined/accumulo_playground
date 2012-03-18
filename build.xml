@@ -1,0 +1,60 @@
+<project name="accumulo_playground" basedir="." default="default">
+
+	<property name="accumulo.install.dir" value="${user.home}/accumulo-1.5.0-incubating-SNAPSHOT" />
+	<property name="build.dir" value="target" />
+	<property name="lib.dir" value="lib" />
+	<property name="main-class" value="com.codebits.accumulo.App" />
+	<property name="src.dir" value="src/main/java" />
+
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="jar.file" value="${jar.dir}/${ant.project.name}.jar" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+	</path>
+
+	<target name="default" description="--> description">
+		<!-- get the source compile classpath in a printable form -->
+		<pathconvert pathsep="${line.separator}|   |-- " property="echo.path.compile" refid="classpath" />
+		<echo message="|-- compile classpath" />
+		<echo message="|   |" />
+		<echo message="|   |-- ${echo.path.compile}" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.file}" basedir="target/classes">
+			<zipgroupfileset dir="lib" includes="*.jar" />
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+		<copy todir="${accumulo.install.dir}/lib/ext">
+			<fileset dir="${jar.dir}" />
+		</copy>
+	</target>
+
+	<target name="run" depends="default">
+		<java jar="${jar.file}" fork="true">
+			<classpath>
+				<path refid="classpath" />
+			</classpath>
+		</java>
+	</target>
+
+</project>

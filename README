@@ -11,5 +11,22 @@ https://issues.apache.org/jira/browse/ACCUMULO
 
 https://svn.apache.org/repos/asf/incubator/accumulo
  Apache SVN URL
+ 
+http://localhost:50070/dfshealth.jsp
+ Hadoop NameNode Monitor
+ 
+http://localhost:50030/jobtracker.jsp
+ Hadoop JobTracker Monitor
+ 
+http://localhost:50095/
+ Accumulo Monitor
 
 
+createtable david
+setiter -t david -p 11 -scan -minc -majc -n ageStats -class com.codebits.accumulo.combiner.AgeCombiner
+insert 123456 age male 45
+insert 123456 age male 99
+insert 123456 age male 15
+insert 123456 age female 23
+insert 123456 age female 55
+insert 123456 age female 3

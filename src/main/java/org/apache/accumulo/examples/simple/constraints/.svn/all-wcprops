@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/constraints
+END
+MaxMutationSize.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/constraints/MaxMutationSize.java
+END
+AlphaNumKeyConstraint.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/constraints/AlphaNumKeyConstraint.java
+END
+NumericValueConstraint.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/repos/asf/!svn/ver/1300311/incubator/accumulo/trunk/examples/simple/src/main/java/org/apache/accumulo/examples/simple/constraints/NumericValueConstraint.java
+END
