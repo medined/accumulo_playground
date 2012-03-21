@@ -30,3 +30,20 @@ insert 123456 age male 15
 insert 123456 age female 23
 insert 123456 age female 55
 insert 123456 age female 3
+
+deleteiter -t david -n ageStats
+
+
+createtable yb
+insert "n1" "" "" "pA"
+insert "n1,n2" "" "" "pA"
+insert "n1,n2,n3" "" "" "pA"
+insert "n1,n2,n3,n4" "" "" "pA"
+insert "n1" "" "" "pB"
+insert "n1,n2" "" "" "pB"
+insert "n1,n2,n3" "" "" "pB"
+insert "n2" "" "" "pC"
+insert "n1" "" "" "pD"
+insert "n1,n2" "" "" "pD"
+insert "n1,n2,n3" "" "" "pD"
+insert "n1,n2,n3,n4" "" "" "pD"

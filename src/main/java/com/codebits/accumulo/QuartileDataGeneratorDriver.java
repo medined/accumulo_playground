@@ -1,19 +1,18 @@
 package com.codebits.accumulo;
 
-import java.util.Collections;
-
 import org.apache.accumulo.core.client.AccumuloException;
 import org.apache.accumulo.core.client.AccumuloSecurityException;
+import org.apache.accumulo.core.client.BatchWriter;
 import org.apache.accumulo.core.client.Connector;
-import org.apache.accumulo.core.client.IteratorSetting;
+import org.apache.accumulo.core.client.MultiTableBatchWriter;
 import org.apache.accumulo.core.client.TableExistsException;
 import org.apache.accumulo.core.client.TableNotFoundException;
 import org.apache.accumulo.core.client.ZooKeeperInstance;
-import org.apache.accumulo.core.iterators.Combiner;
+import org.apache.accumulo.core.data.Mutation;
+import org.apache.accumulo.core.data.Value;
+import org.apache.hadoop.io.Text;
 
-import com.codebits.accumulo.combiner.AgeCombiner;
-
-public class CreateTableAndSetCombiner {
+public class QuartileDataGeneratorDriver {
     
     public static void main(String[] args) throws AccumuloException, AccumuloSecurityException, TableNotFoundException, TableExistsException {
         System.out.println("START");
@@ -22,22 +21,16 @@ public class CreateTableAndSetCombiner {
         String zooKeepers = "localhost";
         String user = "root";
         byte[] pass = "password".getBytes();
-        String tableName = "david";
+        String tableName = "quartiles";
 
         ZooKeeperInstance instance = new ZooKeeperInstance(instanceName, zooKeepers);
         Connector connector = instance.getConnector(user, pass);
-        //MultiTableBatchWriter writer = connector.createMultiTableBatchWriter(200000l, 300, 4);
+        MultiTableBatchWriter writer = connector.createMultiTableBatchWriter(200000l, 300, 4);
 
         if (!connector.tableOperations().exists(tableName)) {
             connector.tableOperations().create(tableName);
         }
-        
-        IteratorSetting iteratorSetting = new IteratorSetting(1, AgeCombiner.class);
-        iteratorSetting.setName("ageCombiner");
-        Combiner.setColumns(iteratorSetting, Collections.singletonList(new IteratorSetting.Column("age")));
-        connector.tableOperations().attachIterator(tableName, iteratorSetting);
 
-        /*
         BatchWriter bw = writer.getBatchWriter(tableName);
 
         try {
@@ -53,8 +46,6 @@ public class CreateTableAndSetCombiner {
         		writer.close();
         	}
         }
-         */
-
         System.out.println("END");
     }
 }
