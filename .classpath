@@ -4,15 +4,10 @@
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/accumulo-core-1.5.0-incubating-SNAPSHOT.jar" sourcepath="/accumulo_trunk/core/src/main/java"/>
-	<classpathentry kind="lib" path="lib/accumulo-server-1.5.0-incubating-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="lib/accumulo-start-1.5.0-incubating-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="lib/cloudtrace-1.5.0-incubating-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.5.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-api-1.0.4.jar"/>
-	<classpathentry kind="lib" path="lib/examples-simple-1.5.0-incubating-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/hadoop-core-0.20.2.jar"/>
 	<classpathentry kind="lib" path="lib/libthrift-0.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
@@ -21,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/zookeeper-3.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-jci-fam-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-jci-core-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/accumulo-core-1.5.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
