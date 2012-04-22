@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="lib/commons-jci-fam-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-jci-core-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/accumulo-core-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/cloudtrace-1.5.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
