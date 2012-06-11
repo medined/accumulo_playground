@@ -1,6 +1,8 @@
 <project name="accumulo_playground" basedir="." default="default">
 
-	<property name="accumulo.install.dir" value="${user.home}/accumulo-1.5.0-incubating-SNAPSHOT" />
+	<property environment="env"/>
+	
+	<property name="accumulo.install.dir" value="${env.ACCUMULO_HOME}" />
 	<property name="build.dir" value="target" />
 	<property name="lib.dir" value="lib" />
 	<property name="main-class" value="com.codebits.accumulo.App" />
@@ -15,6 +17,8 @@
 	</path>
 
 	<target name="default" description="--> description">
+		<echo>accumulo.install.dir: ${accumulo.install.dir}</echo>
+		<echo>            jar.file: ${jar.file}</echo>
 		<!-- get the source compile classpath in a printable form -->
 		<pathconvert pathsep="${line.separator}|   |-- " property="echo.path.compile" refid="classpath" />
 		<echo message="|-- compile classpath" />
