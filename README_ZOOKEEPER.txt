@@ -16,7 +16,17 @@ $ tar xvfz zookeeper-3.4.3.tar.gz
 $ sudo mv zookeeper-3.4.3 /usr/lib
 $ rm zookeeper-3.4.3.tar.gz
 $ cp $ZOOKEEPER_HOME/conf/zoo_sample.cfg $ZOOKEEPER_HOME/conf/zoo.cfg
-$ echo "maxClientCnxns=100" | sudo tee -a $ZOOKEEPER_HOME/conf/zoo.cfg
+
+##########
+# Edit $ZOOKEEPER_HOME/conf/zoo.cfg
+#
+#  Add "maxClientCnxns=100" to the end of the file.
+#  Change dataDir to /var/local/zookeeper
+##########
+
+$ mkdir /var/local/zookeeper
+
+
 $ $ZOOKEEPER_HOME/bin/zkServer.sh start
 
 ##########
