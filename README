@@ -53,3 +53,11 @@ insert "n1,n2" "" "" "pD"
 insert "n1,n2,n3" "" "" "pD"
 insert "n1,n2,n3,n4" "" "" "pD"
 
+start-server.sh localhost tserver
+start-server.sh localhost master
+start-server.sh localhost gc
+start-server.sh localhost monitor
+start-server.sh localhost tracer
+
+
+
