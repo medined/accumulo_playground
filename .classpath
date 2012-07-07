@@ -16,10 +16,12 @@
 	<classpathentry kind="lib" path="lib/zookeeper-3.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-jci-fam-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-jci-core-1.0.jar"/>
-	<classpathentry kind="lib" path="lib/accumulo-core-1.5.0-SNAPSHOT.jar" sourcepath="/home/medined/eclipse_projects/accumulo_trunk/core/src/main/java"/>
-	<classpathentry kind="lib" path="lib/cloudtrace-1.5.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/commons-math3-3.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="/home/medined/eclipse_projects/accumulo_trunk/lib/accumulo-core-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/medined/eclipse_projects/accumulo_trunk/lib/accumulo-server-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/medined/eclipse_projects/accumulo_trunk/lib/cloudtrace-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/medined/accumulo-1.5.0-SNAPSHOT/conf"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
