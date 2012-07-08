@@ -1,4 +1,30 @@
 
+########
+# Create the accumulo user
+########
+
+$ su - root
+$ addgroup accumulo
+$ adduser --ingroup accumulo accumulo
+$ su - accumulo
+$ ssh-keygen -t rsa -P ""
+$ cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+$ chmod 600 ~/.ssh/authorized_keys
+$ ssh localhost
+
+##########
+# Update BASH Configuration (.bashrc)
+##########
+
+export DEFAULT_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export ACCUMULO_HOME=/usr/local/accumulo
+export HADOOP_HOME=/usr/local/hadoop
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386
+export ZOOKEEPER_HOME=/usr/local/zookeeper
+export PATH=$ACCUMULO_HOME/bin:$HADOOP_HOME/bin:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin:$DEFAULT_PATH
+
+$ exit
+
 ##########
 # Update the installed software
 ##########
@@ -191,6 +217,15 @@ $ jps
   3517 NameNode
   3737 DataNode
 
+#########
+# Create the /accumulo hdfs directory
+#########
+
+$ sudo su - hadoop
+$ hadoop fs -mkdir /accumulo
+$ hadoop fs -chown accumulo /accumulo
+
+##############
 # Get your IP address from the ifconfig command.
 
 ##########
@@ -213,19 +248,21 @@ $ rm index.html
 # Configure Zookeeper (see README_ZOOKEEPER.txt)
 ##########
 
-$ cd ~
-$ export TAR_DIR=./workspace/accumulo/assemble/target
+$ sudu su -
+$ cd /usr/local
+$ export TAR_DIR=/home/medined/workspace/accumulo/assemble/target
 $ rm -rf accumulo-1.5.0-SNAPSHOT
 $ tar xvzf $TAR_DIR/accumulo-1.5.0-SNAPSHOT-dist.tar.gz
-# Add the following to your .bashrc file.
-$ export ACCUMULO_HOME=~/accumulo-1.5.0-SNAPSHOT
+$ chown -R accumulo:accumulo /usr/local/accumulo-1.5.0-SNAPSHOT
+$ ln -s /usr/local/accumulo-1.5.0-SNAPSHOT accumulo
 
+$ sudo su accumulo
 $ cd $ACCUMULO_HOME
 $ cp conf/examples/512MB/standalone/* conf
 
 # Change (or add) the trace.password entry if the root password is
 # not the default of "secret"
-$ vi accumulo-site.xml
+$ vi conf/accumulo-site.xml
   <property>
     <name>trace.password</name>
     <value>mypassword_for_root_user</value>

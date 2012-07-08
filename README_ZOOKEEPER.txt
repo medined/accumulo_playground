@@ -11,7 +11,6 @@ $ ssh-keygen -t rsa -P ""
 $ cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
 $ chmod 600 ~/.ssh/authorized_keys
 $ ssh localhost
-$ exit
 
 ##########
 # Update BASH Configuration (.bashrc)
@@ -21,6 +20,8 @@ export DEFAULT_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export PATH=$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin:$DEFAULT_PATH
+
+$ exit
 
 ##########
 # Download and install zookeeper
