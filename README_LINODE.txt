@@ -59,13 +59,31 @@ $ mvn -Dmaven.test.skip=true package -P assemble
 
 ##########
 # Install Apache Hadoop 
+#
+# Check out the following for more details:
+#  http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster
 ##########
-$ cd ~
+$ su - root
+$ addgroup hadoop
+$ adduser --ingroup hadoop hadoop
+$ su - hadoop
+$ ssh-keygen -t rsa -P ""
+$ cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+$ ssh localhost
+$ exit
+
+###### 
+#
+# Back as root user
+#  disable ipv6
+#  
+
+$ cd /usr/local 
 $ wget http://apache.mirrors.tds.net//hadoop/common/hadoop-0.20.2/hadoop-0.20.2.tar.gz
 $ tar xvfz hadoop-0.20.2.tar.gz
-$ sudo mv hadoop-0.20.2 /usr/lib
 $ rm hadoop-0.20.2.tar.gz
-$ cd /usr/lib/hadoop-0.20.2
+$ chown -R hadoop:hadoop hadoop
+$ ln -s hadoop-0.20.2 hadoop
 
 ##########
 # Now we can configure Pseudo-Distributed hadoop
@@ -76,8 +94,10 @@ $ cd /usr/lib/hadoop-0.20.2
 # Set some environment variables. I added these to my 
 # .bashrc file.
 
-$ export HADOOP_HOME=/usr/lib/hadoop-0.20.2
-
+$ export DEFAULT_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+$ export HADOOP_HOME=/usr/local/hadoop
+$ export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386
+$ export PATH=$HADOOP_HOME/bin:$JAVA_HOME/bin:$DEFAULT_PATH
 
 # Create the hadoop temp directory. It should not 
 # be in the /tmp directory because that directory
@@ -85,6 +105,7 @@ $ export HADOOP_HOME=/usr/lib/hadoop-0.20.2
 # that is done a lot with virtual machines.
 sudo mkdir /hadoop_tmp_dir
 sudo chmod 777 /hadoop_tmp_dir
+sudo chown hadoop:hadoop /hadoop_tmp_dir
 
 $ cd $HADOOP_HOME/conf
 
