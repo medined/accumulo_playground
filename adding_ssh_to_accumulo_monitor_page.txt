@@ -1,0 +1,67 @@
+keytool -genkey -alias mykey -keyalg RSA -keypass password -storepass password -keystore accumulo_keystore.jks
+keytool -export -alias mykey -storepass password -file accumulo_server.cer -keystore accumulo_keystore.jks
+keytool -import -v -trustcacerts -alias mykey -file accumulo_server.cer -keystore accumulo_cacerts.jks -keypass password -storepass password
+
+medined@bashi:~/.ssh$ keytool -genkey -alias mykey -keyalg RSA -keypass password -storepass password -keystore accumulo_keystore.jks
+What is your first and last name?
+  [Unknown]:
+What is the name of your organizational unit?
+  [Unknown]:
+What is the name of your organization?
+  [Unknown]:
+What is the name of your City or Locality?
+  [Unknown]:
+What is the name of your State or Province?
+  [Unknown]:
+What is the two-letter country code for this unit?
+  [Unknown]:
+Is CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown correct?
+  [no]:  yes
+
+medined@bashi:~/.ssh$ keytool -export -alias mykey -storepass password -file accumulo_server.cer -keystore accumulo_keystore.jks
+Certificate stored in file <accumulo_server.cer>
+
+medined@bashi:~/.ssh$ keytool -import -v -trustcacerts -alias mykey -file accumulo_server.cer -keystore accumulo_cacerts.jks -keypass password -storepass password
+Owner: CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Issuer: CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Serial number: 788ca20b
+Valid from: Mon Jun 18 19:11:37 EDT 2012 until: Sun Sep 16 19:11:37 EDT 2012
+Certificate fingerprints:
+	 MD5:  D1:2C:9A:EE:51:D4:AC:CB:E9:F1:CA:F7:C8:D2:E1:90
+	 SHA1: D0:27:41:2D:BB:12:C5:BA:BB:1C:1C:94:F6:F2:EB:83:AC:26:59:E7
+	 SHA256: 68:02:C6:B1:BF:02:16:FD:C1:6C:33:16:45:E4:55:ED:19:E3:73:58:16:9C:80:52:D3:92:A0:08:6E:FB:86:15
+	 Signature algorithm name: SHA256withRSA
+	 Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 6C 8C C3 86 EB A3 86 78   DB 2C 14 E6 55 47 29 F9  l......x.,..UG).
+0010: C5 B0 B3 45                                        ...E
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+[Storing accumulo_cacerts.jks]
+
+
+Set the following properties in accumulo-site.xml:
+<property>
+  <name>monitor.ssl.keyStore</name>
+  <value>/home/medined/.ssh/accumulo_keystore.jks</value>
+</property>
+<property>
+  <name>monitor.ssl.keyStorePassword</name>
+  <value>password</value>
+</property>
+<property>
+  <name>monitor.ssl.trustStore</name>
+  <value>/home/medined/.ssh/accumulo_cacerts.jks</value>
+</property>
+<property>
+  <name>monitor.ssl.trustStorePassword</name>
+  <value>password</value>
+</property>
