@@ -254,6 +254,9 @@ $ export TAR_DIR=/home/medined/workspace/accumulo/assemble/target
 $ rm -rf accumulo-1.5.0-SNAPSHOT
 $ tar xvzf $TAR_DIR/accumulo-1.5.0-SNAPSHOT-dist.tar.gz
 $ chown -R accumulo:accumulo /usr/local/accumulo-1.5.0-SNAPSHOT
+# Make the lib/ext directory group writeable so that you can deply jar
+# files there.
+$ chmod g+w /usr/local/accumulo-1.5.0-SNAPSHOT/lib/ext
 $ ln -s /usr/local/accumulo-1.5.0-SNAPSHOT accumulo
 
 $ sudo su accumulo
