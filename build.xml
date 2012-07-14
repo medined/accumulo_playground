@@ -61,4 +61,13 @@
 		</java>
 	</target>
 
+	<target name="CreateTableAndSetCombiner" depends="default">
+		<java classname="com.codebits.accumulo.CreateTableAndSetCombiner" fork="true">
+			<classpath>
+				<pathelement path="target/classes"/>
+				<path refid="classpath" />
+			</classpath>
+		</java>
+	</target>
+
 </project>

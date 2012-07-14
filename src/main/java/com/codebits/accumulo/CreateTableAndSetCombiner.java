@@ -22,20 +22,23 @@ public class CreateTableAndSetCombiner {
         String zooKeepers = "localhost";
         String user = "root";
         byte[] pass = "password".getBytes();
-        String tableName = "david";
+        String tableName = "demo";
 
         ZooKeeperInstance instance = new ZooKeeperInstance(instanceName, zooKeepers);
         Connector connector = instance.getConnector(user, pass);
         //MultiTableBatchWriter writer = connector.createMultiTableBatchWriter(200000l, 300, 4);
 
         if (!connector.tableOperations().exists(tableName)) {
+	    System.out.println("TABLE DOES NOT EXIST");
             connector.tableOperations().create(tableName);
-        }
+        } else {
+	    System.out.println("TABLE EXISTS");
+	}
         
-        IteratorSetting iteratorSetting = new IteratorSetting(1, AgeCombiner.class);
-        iteratorSetting.setName("ageCombiner");
-        Combiner.setColumns(iteratorSetting, Collections.singletonList(new IteratorSetting.Column("age")));
-        connector.tableOperations().attachIterator(tableName, iteratorSetting);
+        //IteratorSetting iteratorSetting = new IteratorSetting(1, AgeCombiner.class);
+        //iteratorSetting.setName("ageCombiner");
+        //Combiner.setColumns(iteratorSetting, Collections.singletonList(new IteratorSetting.Column("age")));
+        //connector.tableOperations().attachIterator(tableName, iteratorSetting);
 
         /*
         BatchWriter bw = writer.getBatchWriter(tableName);
