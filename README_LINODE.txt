@@ -222,8 +222,8 @@ $ jps
 #########
 
 $ sudo su - hadoop
-$ hadoop fs -mkdir /accumulo
-$ hadoop fs -chown accumulo /accumulo
+$ hadoop fs -mkdir /user/accumulo
+$ hadoop fs -chown accumulo /user/accumulo
 
 ##############
 # Get your IP address from the ifconfig command.
@@ -270,6 +270,16 @@ $ vi conf/accumulo-site.xml
     <name>trace.password</name>
     <value>mypassword_for_root_user</value>
   </property>
+
+# Also change the location where Accumulo stores its files int HDFS
+# The default is /accumulo which makes it hard, at least for me,
+# to recover. If something goes wrong, just delete the accumulo
+# subdirectory and reinitialize.
+   <property>
+     <name>instance.dfs.dir</name>
+     <value>/user/accumulo/accumulo</value>
+   </property>
+
 
 # create the write-ahead directory.
 $ cd $ACCUMULO_HOME
