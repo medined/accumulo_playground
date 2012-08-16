@@ -2,8 +2,6 @@ package com.codebits.zookeeper;
 
 import java.util.List;
 
-import org.apache.accumulo.server.client.HdfsZooInstance;
-import org.apache.accumulo.server.zookeeper.IZooReaderWriter;
 import org.apache.accumulo.server.zookeeper.ZooReaderWriter;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
@@ -33,7 +31,7 @@ public class PlayDriver {
 
 	public static void main(String[] args) {
 		ZooKeeper zk = ZooReaderWriter.getInstance().getZooKeeper();
-	    String iid = HdfsZooInstance.getInstance().getInstanceID();
+	    //String iid = HdfsZooInstance.getInstance().getInstanceID();
 		PlayDriver driver = new PlayDriver();
 		driver.list(zk, "/accumulo");
 	}

@@ -1,17 +1,11 @@
 package com.codebits.accumulo;
 
-import java.util.Collections;
-
 import org.apache.accumulo.core.client.AccumuloException;
 import org.apache.accumulo.core.client.AccumuloSecurityException;
 import org.apache.accumulo.core.client.Connector;
-import org.apache.accumulo.core.client.IteratorSetting;
 import org.apache.accumulo.core.client.TableExistsException;
 import org.apache.accumulo.core.client.TableNotFoundException;
 import org.apache.accumulo.core.client.ZooKeeperInstance;
-import org.apache.accumulo.core.iterators.Combiner;
-
-import com.codebits.accumulo.combiner.AgeCombiner;
 
 public class CreateTableAndSetCombiner {
     

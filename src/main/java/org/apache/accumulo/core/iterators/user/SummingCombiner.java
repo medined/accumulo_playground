@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import org.apache.accumulo.core.data.Key;
 import org.apache.accumulo.core.iterators.LongCombiner;
-import org.apache.accumulo.core.iterators.OptionDescriber.IteratorOptions;
 
 public class SummingCombiner extends LongCombiner {
 

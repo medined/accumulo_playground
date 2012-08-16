@@ -61,3 +61,6 @@ start-server.sh localhost tracer
 
 
 
+# Test to see if group exists.
+# cat /etc/group | egrep \"^accumulo\" | wc -l
+

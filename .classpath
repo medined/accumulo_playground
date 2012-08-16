@@ -19,5 +19,9 @@
 	<classpathentry kind="lib" path="lib/commons-math3-3.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/accumulo-core-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/accumulo-server-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/accumulo-start-1.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/cloudtrace-1.5.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
