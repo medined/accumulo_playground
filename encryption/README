@@ -1,0 +1,36 @@
+# generate private key for andy
+openssl genrsa -out andy.pem 2048
+openssl rsa -in andy.pem -pubout > andy.pub
+
+# generate private key for david
+openssl genrsa -out david.pem 2048
+openssl rsa -in david.pem -pubout > david.pub
+
+# generate self-signed certificate for RECIPIENT
+openssl req -x509 -nodes -days 365 -subj '/C=US/ST=Virgina/L=Fairfax/CN=www.affy.com' -newkey rsa:2048 -keyout recipient.pem -out recipient_cert.pem
+openssl rsa -in recipient.pem -pubout > recipient.pub
+
+# generate self-signed certificate for SENDER
+openssl req -x509 -nodes -days 365 -subj '/C=US/ST=Virgina/L=Fairfax/CN=www.affy.com' -newkey rsa:2048 -keyout sender.pem -out sender_cert.pem
+openssl rsa -in sender.pem -pubout > sender.pub
+
+#encrypt and decrypt
+openssl rsautl -encrypt -pubin -inkey andy.pub < my-message.txt > my-encrypted-message.txt
+openssl rsautl -decrypt -inkey andy.pem < my-encrypted-message.txt
+
+# sign and verify
+openssl rsautl -sign -inkey david.pem < my-message.txt > signed.dat
+openssl rsautl -verify -inkey david.pub -pubin < signed.dat
+
+
+####
+# Working with Java
+####
+
+# generate private key
+openssl genrsa -out private.pem 2048
+# convert to format for java.
+openssl pkcs8 -topk8 -in private.pem -outform DER -out private.der -nocrypt
+# generate public key
+openssl rsa -in private.pem -pubout -outform DER -out public.der
+
