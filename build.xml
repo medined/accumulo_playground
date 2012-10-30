@@ -48,9 +48,11 @@
 				<attribute name="Main-Class" value="${main-class}" />
 			</manifest>
 		</jar>
+		<!--
 		<copy todir="${accumulo.install.dir}/lib/ext">
 			<fileset dir="${jar.dir}" />
 		</copy>
+		-->
 	</target>
 
 	<target name="run" depends="default">

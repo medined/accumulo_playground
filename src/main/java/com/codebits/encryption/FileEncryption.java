@@ -62,7 +62,15 @@ public class FileEncryption {
 	public void loadKey(File in, File privateKeyFile) throws GeneralSecurityException, IOException {
 		// read private key to be used to decrypt the AES key
 		byte[] encodedKey = new byte[(int)privateKeyFile.length()];
-		new FileInputStream(privateKeyFile).read(encodedKey);
+		FileInputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(privateKeyFile);
+			inputStream.read(encodedKey);
+		} finally {
+			if (inputStream != null) {
+				inputStream.close();
+			}
+		}
 		
 		// create private key
 		PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(encodedKey);
@@ -72,8 +80,15 @@ public class FileEncryption {
 		// read AES key
 		pkCipher.init(Cipher.DECRYPT_MODE, pk);
 		aesKey = new byte[AES_Key_Size/8];
-		CipherInputStream is = new CipherInputStream(new FileInputStream(in), pkCipher);
-		is.read(aesKey);
+		CipherInputStream is = null;
+		try {
+			is = new CipherInputStream(new FileInputStream(in), pkCipher);
+			is.read(aesKey);
+		} finally {
+			if (is != null) {
+				is.close();
+			}
+		}
 		aeskeySpec = new SecretKeySpec(aesKey, "AES");
 	}
 	
@@ -83,7 +98,15 @@ public class FileEncryption {
 	public void saveKey(File out, File publicKeyFile) throws IOException, GeneralSecurityException {
 		// read public key to be used to encrypt the AES key
 		byte[] encodedKey = new byte[(int)publicKeyFile.length()];
-		new FileInputStream(publicKeyFile).read(encodedKey);
+		FileInputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(publicKeyFile);
+			inputStream.read(encodedKey);
+		} finally {
+			if (inputStream != null) {
+				inputStream.close();
+			}
+		}
 		
 		// create public key
 		X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(encodedKey);
