@@ -1,6 +1,7 @@
 package com.codebits.accumulo;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -19,17 +20,26 @@ import org.apache.accumulo.core.data.Value;
 import org.apache.accumulo.core.security.Authorizations;
 import org.apache.hadoop.io.Text;
 
-public class ReversingStringSortOrderWithMockInstanceDriver {
+public class ReversingIntSortOrderWithMockInstanceDriver {
 
-  static byte[] convert(byte[] row) {
-    byte[] rv = new byte[row.length * 2];
-    for (int i = 0; i < row.length; i++) {
-      rv[i] = (byte) (255 - row[i]);
+  static byte[] convert(int value) {
+    byte[] key = ByteBuffer.allocate(4).putInt(value).array();
+    byte[] reverse_key = ByteBuffer.allocate(4).putInt(Integer.MAX_VALUE - value).array();
+    byte[] rv = new byte[8];
+    for (int i = 0; i < 4; i++) {
+      rv[i] = reverse_key[i];
     }
-    for (int i = 0; i < row.length; i++) {
-      rv[i + row.length] = row[i];
+    for (int i = 0; i < 4; i++) {
+      rv[i + 4] = key[i];
     }
     return rv;
+  }
+
+  public static String toHexString(byte[] ba) {
+    StringBuilder str = new StringBuilder();
+    for (int i = 0; i < ba.length; i++)
+      str.append(String.format("%x", ba[i]));
+    return str.toString();
   }
 
   public static void main(String[] args) throws IOException, AccumuloException, AccumuloSecurityException, TableExistsException, TableNotFoundException {
@@ -39,10 +49,9 @@ public class ReversingStringSortOrderWithMockInstanceDriver {
 
     BatchWriter wr = connector.createBatchWriter("TABLEA", 10000000, 10000, 5);
     for (int i = 5; i > 0; --i) {
-      byte[] key = ("row_" + String.format("%04d", i)).getBytes();
-      byte[] reverse_key = convert(key);
-      Mutation m = new Mutation(new Text(reverse_key));
-      m.put("cf_" + String.format("%04d", i), "cq_" + 1, "val_" + 1);
+      byte[] key = convert(i);
+      Mutation m = new Mutation(new Text(key));
+      m.put("cf", "cq", "value");
       wr.addMutation(m);
     }
     wr.close();
@@ -52,7 +61,7 @@ public class ReversingStringSortOrderWithMockInstanceDriver {
     while (iterator.hasNext()) {
       Map.Entry<Key, Value> entry = iterator.next();
       Key key = entry.getKey();
-      System.out.println("ROW ID: " + key.getRow());
+      System.out.println(toHexString(key.getRow().getBytes()));
     }
   }
 }
